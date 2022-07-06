@@ -1,0 +1,39 @@
+{% load static%}
+
+<link rel="stylesheet" href="{% static 'login.css' %}" >
+
+
+<body>
+    <div class="landing-page screen">
+      <div class="overlap-group">
+        <div class="rectangle-2"></div>
+
+        <div class="rectangle-1"></div>
+
+        <div class="rectangle-6"></div>
+
+        <div class="rectangle-7">
+          <form method = "POST" action="login">
+            {% csrf_token %}
+            <input
+              type="text"
+              id="user"
+              name="username"
+              placeholder="USERNAME"
+            />
+            <input
+              type="password"
+              id="pass"
+              name="password"
+              placeholder="PASSWORD"
+            />
+            <input type="submit" id="submit" value="SUBMIT" />
+          </form>
+        </div>
+
+        <h1 class="title inter-normal alabaster-48px">
+          <span class="inter-normal alabaster-48px">LOGIN</span>
+        </h1>
+      </div>
+    </div>
+  </body>
