@@ -1,0 +1,144 @@
+{% load static %}
+
+<html lang="en">
+    <head>
+      <link href="/static/browse.css" rel="stylesheet" >
+    </head> 
+    <style>
+    :root {
+      --black: rgba(0, 0, 0, 1);
+      --ironside-gray: rgba(104, 99, 94, 1);
+      --ironside-gray-2: rgba(104, 99, 95, 1);
+      --peach-orange: rgba(251, 202, 157, 1);
+      --alabaster: rgba(253, 250, 250, 1);
+      --negroni-2: rgba(255, 222, 192, 1);
+      --negroni: rgba(255, 225, 198, 1);
+      --sazerac: rgba(255, 236, 226, 1);
+      --white: rgba(255, 255, 255, 1);
+      --font-size-m: 24px;
+      --font-size-l: 32px;
+      --font-size-xl: 36px;
+      --font-size-xxl: 48px;
+      --font-family-inter: "Inter";
+      }    
+  
+      .inter-normal-alabaster-36px {
+      
+      color: var(--alabaster);
+      font-family: var(--font-family-inter);
+      font-weight: 400;
+      font-size: var(--font-size-xl);
+      font-style: normal; }
+      
+      .inter-normal-ironside-gray-32px { 
+      color: var(--ironside-gray-2);
+      font-family: var(--font-family-inter);
+      font-size: var(--font-size-l);
+      font-weight: 400;
+      font-style: normal;
+      }
+      
+      .inter-normal-ironside-gray-24px {    
+      color: var(--ironside-gray);
+      font-family: var(--font-family-inter);
+      font-size: var(--font-size-m);
+      font-weight: 400;
+      font-style: normal;
+      }
+  
+      .inter-normal-alabaster-48px {
+      color: var(--alabaster);    
+      font-family: var(--font-family-inter);
+      font-size: var(--font-size-xxl);
+      font-weight: 400;
+      font-style: normal;    
+      }
+      
+      .inter-normal-alabaster-24px {
+      color: var(--alabaster);    
+      font-family: var(--font-family-inter);
+      font-size: var(--font-size-m);
+      font-weight: 400;
+      font-style: normal;
+      }
+      </style>
+    <body>
+    <div class="browse screen">
+      <div class="overlap-group">
+        <div class="nav"></div>
+        <h1 class="title ">
+          <span class="inter-normal-alabaster-48px">FIND A FRIEND!</span>
+        </h1>
+  
+        <img
+          class="group"
+          src="https://anima-uploads.s3.amazonaws.com/projects/62b357833422e3d8c84741aa/releases/62b357a767d65f4faaff22dc/img/group-2@2x.png">
+        <div class="namedetails"></div>
+
+        <div class="namedetails-1">
+            {% for profile in profiles %}
+            <div class="profile">
+              <ul>
+                <li>
+               Name: {{profile.name}}
+                </li>
+                <li>
+                  Description: {{profile.description}}
+                   </li>
+                   <li>
+                    Interests: {{profile.interests}}
+                     </li>
+                     <br></br>
+                     <br></br>
+                     <li>
+                      Age: {{profile.age}}
+                       </li>
+                       <li>
+                        Hobby: {{profile.hobby}}
+                         </li>
+                         <li>
+                          Fav Food: {{profile.food}}
+                           </li>
+                           <li>
+                            Fav Color: {{profile.color}}
+                           </li>
+                </ul>
+            </div>
+              <br></br>
+            {% endfor %}
+        </div>
+
+        
+        <form method="POST" action="browse">
+          {%csrf_token%}
+                <label for="filter by"></label>
+          <input type="text" id="fname" class= "filter" name="fname">        
+          <select name="sort" class="sort" id="sort">
+            <option value="select">Select</option>
+            <optgroup label="Alphabetical">
+              <option value="Alphabetic Ascending">Ascending</option>
+              <option value="Alphabetic Descending">Descending</option>
+            </optgroup>
+            <optgroup label="Age">
+              <option value="Age Ascending">Ascending</option>
+              <option value="Age Descending">Descending</option>
+            </optgroup>
+          </select>
+        <input type="submit" class="submit" name="submit" value="">
+    </form>
+        <div class="filter-1 inter-normal-ironside-gray-24px">
+          <span class="inter-normal-ironside-gray-24px">Filter:</span>
+        </div>
+  
+        <div class="sort-1 inter-normal-ironside-gray-24px">
+          <span class="inter-normal-ironside-gray 24px">Sort:</span>
+          </div>
+          <div class="submit-1 inter-normal-alabaster-24px">
+            <span class="inter-normal-alabaster-24px">Submit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </body>
+  </html>
+  
